@@ -1,6 +1,6 @@
 class TuringMakinesi:
     def __init__(self, plaka):
-        # Girdiyi banda yerleştir ve sonuna boşluk sembolü ekle
+        
         self.bant = list(plaka) + ['_']
         self.kafa = 0
         self.durum = 'q0'
@@ -11,22 +11,22 @@ class TuringMakinesi:
         rakamlar = [str(i) for i in range(10)]
         harfler = [chr(i) for i in range(65, 91)]
         
-        # q0 -> ilk rakam
+        
         for r in rakamlar: tablo[('q0', r)] = ('q1', r, 'R')
-        # q1 -> ikinci rakam
+        
         for r in rakamlar: tablo[('q1', r)] = ('q2', r, 'R')
-        # q2 -> ilk harf
+        
         for h in harfler: tablo[('q2', h)] = ('q3', h, 'R')
-        # q3 -> ikinci harf
+        
         for h in harfler: tablo[('q3', h)] = ('q4', h, 'R')
-        # q4 -> ilk rakam
+        
         for r in rakamlar: tablo[('q4', r)] = ('q5', r, 'R')
-        # q5 -> ikinci rakam
+        
         for r in rakamlar: tablo[('q5', r)] = ('q6', r, 'R')
-        # q6 -> üçüncü rakam
+        
         for r in rakamlar: tablo[('q6', r)] = ('q7', r, 'R')
         
-        # q7 -> kabul durumu (7 karakterden sonra boşluk gelmeli)
+        
         tablo[('q7', '_')] = ('q_kabul', '_', 'R')
         
         return tablo
@@ -45,7 +45,7 @@ class TuringMakinesi:
                 self.bant[self.kafa] = yazilan_sembol
                 self.durum = yeni_durum
                 
-                # Kafa hareketi
+                
                 if yon == 'R':
                     self.kafa += 1
                 elif yon == 'L':
@@ -61,7 +61,7 @@ class TuringMakinesi:
         else:
             print("Sonuç: RED")
 
-# Kullanıcıdan plaka bilgisini alma
+
 if __name__ == "__main__":
     girdi = input("Lütfen plaka bilgisini giriniz: ")
     tm = TuringMakinesi(girdi)
